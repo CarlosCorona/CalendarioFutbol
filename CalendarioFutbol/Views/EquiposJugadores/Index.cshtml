@@ -1,0 +1,55 @@
+﻿@using CalendarioFutbol.Models;
+@model IEnumerable<CalendarioFutbol.DataAccess.EquiposJugadores>
+
+@using CalendarioFutbol.DataAccess;
+
+@{
+    ViewBag.Title = "Jugadores por Equipo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Jugadores del equipo: @ViewData["Equipo"]</h2>
+
+@using (Html.BeginForm("Create", "EquiposJugadores", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("EquipoID", ViewData["EquipoID"])
+    <table class="table">
+        <tr>
+            <th>
+                Jugador
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DropDownList("JugadorID", new SelectList((List<JugadoresLista>)ViewData["JugadoresFiltrados"], "ID", "Nombre"), "Selecciona Jugador", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </td>
+        </tr>
+    </table>
+}
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @(((List<JugadoresLista>)ViewData["Jugadores"]).First(x => x.ID == item.JugadorID).Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.EquipoJugadorID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Lista de Equipos", "Index", "Equipos")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

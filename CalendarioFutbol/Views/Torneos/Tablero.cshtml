@@ -1,0 +1,25 @@
+﻿@model CalendarioFutbol.Models.TableroVista
+
+@{
+    ViewBag.Title = "Tablero";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2 class="p-5 text-center">@Model.NombreTorneo</h2>
+    @foreach (var item in @Model.JuegosTorneo)
+    {
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-md-center">
+                    <div class="col"><span>@item.Local</span>  -  <img src="@Url.Content(item.Imagenlocal)" class="rounded" width="30" height="30"></div>
+                    <div class="col text-center"><h4> VS </h4></div>
+                    <div class="col text-right"><img src="@Url.Content(item.ImagenVisitante)" class="rounded" width="30" height="30">  -  <span>@item.Visitante</span></div>
+                </div>
+                <div class="row align-items-md-center">
+                    <div class="col text-center"><h5><strong>@item.Horario</strong></h5></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

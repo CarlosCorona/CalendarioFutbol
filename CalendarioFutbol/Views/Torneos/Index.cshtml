@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CalendarioFutbol.DataAccess.Torneo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TorneoID }) |
+                @Html.ActionLink("Agregar Juegos", "index", "Juegos", new { id = item.TorneoID }, null) |
+                @Html.ActionLink("Tablero", "Tablero", new { id = item.TorneoID }, null) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TorneoID })
+            </td>
+        </tr>
+    }
+
+</table>

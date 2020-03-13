@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CalendarioFutbol.DataAccess.Jugadores>
+
+@{
+    ViewBag.Title = "Jugadores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Jugadores</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Jugador", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eliminado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.CheckBoxFor(modelItem => item.Eliminado, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+    </td>
+    <td>
+        @Html.ActionLink("Editar Jugador", "Edit", new { id = item.JugadorID }) |
+        @Html.ActionLink("Eiminar Jugador", "Delete", new { id = item.JugadorID })
+    </td>
+</tr>
+}
+
+</table>

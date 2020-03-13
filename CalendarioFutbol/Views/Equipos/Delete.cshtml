@@ -1,0 +1,32 @@
+﻿@model CalendarioFutbol.DataAccess.Equipos
+
+@{
+    ViewBag.Title = "Baja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Baja</h2>
+
+<h3>Deseas dar de baja este equipo?</h3>
+<div>
+    <h4>Equipo:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Dar de Baja" class="btn btn-default" /> |
+            @Html.ActionLink("Lista de Equipos", "Index")
+        </div>
+    }
+</div>

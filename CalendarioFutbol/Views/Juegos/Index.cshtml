@@ -1,0 +1,64 @@
+﻿@using CalendarioFutbol.Models;
+@model IEnumerable<CalendarioFutbol.DataAccess.Juegos>
+@using CalendarioFutbol.DataAccess;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Torneos: @ViewData["Torneo"]</h2>
+
+@using (Html.BeginForm("Create", "Juegos", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("TorneoID", ViewData["TorneoID"])
+    <table class="table">
+        <tr>
+            <th>
+                Local
+            </th>
+            <th>
+                Visitante
+            </th>
+            <th>
+                Fecha Hora
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DropDownList("EquipoLocalID", new SelectList((List<EquipoLista>)ViewData["Equipos"], "ID", "Nombre"), "Selecciona Equipo", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownList("EquipoVisitanteID", new SelectList((List<EquipoLista>)ViewData["Equipos"], "ID", "Nombre"), "Selecciona equipo", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.TextBox("FechaHoraPartido", DateTime.Now, htmlAttributes: new { @type = "datetime-local",  @Value = DateTime.Now.ToString("MM/dd/yyyy HH:mm")})
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </td>
+        </tr>
+    </table>
+}
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @(((List<EquipoLista>)ViewData["Equipos"]).First(x => x.ID == item.EquipoLocalID).Nombre)
+            </td>
+            <td>
+                @(((List<EquipoLista>)ViewData["Equipos"]).First(x => x.ID == item.EquipoVisitanteID).Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaHoraPartido)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.JuegosID })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,51 @@
+﻿@model CalendarioFutbol.DataAccess.Juegos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Juegos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TorneoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TorneoID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipoLocalID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipoLocalID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipoVisitanteID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipoVisitanteID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaHoraPartido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaHoraPartido)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.JuegosID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

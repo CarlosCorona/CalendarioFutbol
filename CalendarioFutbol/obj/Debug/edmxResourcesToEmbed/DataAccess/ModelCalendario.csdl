@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="futbolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Equipos">
+    <Key>
+      <PropertyRef Name="EquipoID" />
+    </Key>
+    <Property Name="EquipoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EquiposJugadores">
+    <Key>
+      <PropertyRef Name="EquipoJugadorID" />
+    </Key>
+    <Property Name="EquipoJugadorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipoID" Type="Int32" Nullable="false" />
+    <Property Name="JugadorID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Juegos">
+    <Key>
+      <PropertyRef Name="JuegosID" />
+    </Key>
+    <Property Name="JuegosID" Type="Int32" Nullable="false" />
+    <Property Name="TorneoID" Type="Int32" Nullable="false" />
+    <Property Name="EquipoLocalID" Type="Int32" Nullable="false" />
+    <Property Name="EquipoVisitanteID" Type="Int32" Nullable="false" />
+    <Property Name="FechaHoraPartido" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Jugadores">
+    <Key>
+      <PropertyRef Name="JugadorID" />
+    </Key>
+    <Property Name="JugadorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Torneo">
+    <Key>
+      <PropertyRef Name="TorneoID" />
+    </Key>
+    <Property Name="TorneoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TorneosEquipos">
+    <Key>
+      <PropertyRef Name="TorneoEquipoID" />
+    </Key>
+    <Property Name="TorneoEquipoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TorneoID" Type="Int32" Nullable="false" />
+    <Property Name="EquipoID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CalendarioFutbolEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Equipos" EntityType="Self.Equipos" />
+    <EntitySet Name="EquiposJugadores" EntityType="Self.EquiposJugadores" />
+    <EntitySet Name="Juegos" EntityType="Self.Juegos" />
+    <EntitySet Name="Jugadores" EntityType="Self.Jugadores" />
+    <EntitySet Name="Torneo" EntityType="Self.Torneo" />
+    <EntitySet Name="TorneosEquipos" EntityType="Self.TorneosEquipos" />
+    <EntitySet Name="JuegosJugadores" EntityType="futbolModel.JuegosJugadores" />
+  </EntityContainer>
+  <EntityType Name="JuegosJugadores">
+    <Key>
+      <PropertyRef Name="JuegosJugadoresID" />
+    </Key>
+    <Property Name="JuegosJugadoresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JuegoID" Type="Int32" Nullable="false" />
+    <Property Name="JugadorID" Type="Int32" Nullable="false" />
+    <Property Name="EsLocal" Type="Boolean" Nullable="false" />
+  </EntityType>
+</Schema>

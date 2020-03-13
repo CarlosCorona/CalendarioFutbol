@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="futbolModelStoreContainer" CdmEntityContainer="CalendarioFutbolEntities">
+    <EntitySetMapping Name="Equipos">
+      <EntityTypeMapping TypeName="futbolModel.Equipos">
+        <MappingFragment StoreEntitySet="Equipos">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+          <ScalarProperty Name="EquipoID" ColumnName="EquipoID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquiposJugadores">
+      <EntityTypeMapping TypeName="futbolModel.EquiposJugadores">
+        <MappingFragment StoreEntitySet="EquiposJugadores">
+          <ScalarProperty Name="EquipoJugadorID" ColumnName="EquipoJugadorID" />
+          <ScalarProperty Name="EquipoID" ColumnName="EquipoID" />
+          <ScalarProperty Name="JugadorID" ColumnName="JugadorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Juegos">
+      <EntityTypeMapping TypeName="futbolModel.Juegos">
+        <MappingFragment StoreEntitySet="Juegos">
+          <ScalarProperty Name="JuegosID" ColumnName="JuegosID" />
+          <ScalarProperty Name="TorneoID" ColumnName="TorneoID" />
+          <ScalarProperty Name="EquipoLocalID" ColumnName="EquipoLocalID" />
+          <ScalarProperty Name="EquipoVisitanteID" ColumnName="EquipoVisitanteID" />
+          <ScalarProperty Name="FechaHoraPartido" ColumnName="FechaHoraPartido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jugadores">
+      <EntityTypeMapping TypeName="futbolModel.Jugadores">
+        <MappingFragment StoreEntitySet="Jugadores">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+          <ScalarProperty Name="JugadorID" ColumnName="JugadorID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Torneo">
+      <EntityTypeMapping TypeName="futbolModel.Torneo">
+        <MappingFragment StoreEntitySet="Torneo">
+          <ScalarProperty Name="TorneoID" ColumnName="TorneoID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TorneosEquipos">
+      <EntityTypeMapping TypeName="futbolModel.TorneosEquipos">
+        <MappingFragment StoreEntitySet="TorneosEquipos">
+          <ScalarProperty Name="TorneoEquipoID" ColumnName="TorneoEquipoID" />
+          <ScalarProperty Name="TorneoID" ColumnName="TorneoID" />
+          <ScalarProperty Name="EquipoID" ColumnName="EquipoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JuegosJugadores">
+      <EntityTypeMapping TypeName="futbolModel.JuegosJugadores">
+        <MappingFragment StoreEntitySet="JuegosJugadores">
+          <ScalarProperty Name="EsLocal" ColumnName="EsLocal" />
+          <ScalarProperty Name="JugadorID" ColumnName="JugadorID" />
+          <ScalarProperty Name="JuegoID" ColumnName="JuegoID" />
+          <ScalarProperty Name="JuegosJugadoresID" ColumnName="JuegosJugadoresID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
